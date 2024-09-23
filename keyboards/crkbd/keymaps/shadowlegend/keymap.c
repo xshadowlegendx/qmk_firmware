@@ -85,11 +85,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       RGB_MOD,    BL_OFF,    BL_ON,    RGB_VAD,    RGB_VAI,    KC_NO,                         KC_MUTE,    KC_MPLY,    KC_VOLD,    KC_VOLU,    KC_NO, KC_NO,
+       RGB_MOD,    BL_OFF,    BL_ON,    RGB_VAD,    RGB_VAI,    KC_NO,          KC_NO,     KC_MUTE,    KC_MPLY,    KC_VOLD,    KC_VOLU,    KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_NO, KC_NO, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_NO, KC_NO,
+      KC_NO,  KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,  KC_NO,                     KC_NO, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_NO, KC_NO, RGB_HUD, RGB_HUI, RGB_SPD, RGB_SPI,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+      KC_NO,  RGB_HUD, RGB_HUI, RGB_SPD, RGB_SPI,  KC_NO,                     KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_NO, KC_NO,  KC_NO,     KC_BSPC,   KC_ENT, KC_DEL
                                       //`--------------------------'  `--------------------------'
@@ -219,8 +219,6 @@ static void render_anim(void) {
 }
 
 char wpm_str[10];
-
-int last_counted_wpm;
 
 static void render_ryly_love_animation(void) {
     static const char PROGMEM heart_fill_frames[7][ANIM_SIZE] = {
@@ -497,24 +495,34 @@ static void render_ryly_love_animation(void) {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
     void animation_phase(void) {
-        if (get_current_wpm() < IDLE_SPEED) {
-            if (current_tap_frame > 0) {
-                --current_tap_frame;
-            }
+        current_tap_frame = (current_tap_frame + 1) % 6;
 
-            oled_write_raw_P(idle, sizeof(idle));
-        }
+        oled_write_raw_P(heart_fill_frames[current_tap_frame], sizeof(idle));
 
-        if (get_current_wpm() >= IDLE_SPEED) {
-            if (current_tap_frame < sizeof(heart_fill_frames) / sizeof(heart_fill_frames[0])) {
-                if (get_current_wpm() % 16 == 0 && last_counted_wpm != get_current_wpm()) {
-                    last_counted_wpm = get_current_wpm();
-                    ++current_tap_frame;
-                }
-            }
-
-            oled_write_raw_P(heart_fill_frames[current_tap_frame], sizeof(heart_fill_frames[0]));
-        }
+        // if (get_current_wpm() < IDLE_SPEED) {
+        //     if (current_tap_frame > 0) {
+        //         current_idle_frame = (current_idle_frame + 1) % 4;
+        //         if (current_idle_frame == 0) {
+        //             --current_tap_frame;
+        //         }
+        //
+        //         oled_write_raw_P(heart_fill_frames[current_tap_frame], sizeof(idle));
+        //
+        //         return;
+        //     }
+        //
+        //     oled_write_raw_P(idle, sizeof(idle));
+        // }
+        //
+        // if (get_current_wpm() >= IDLE_SPEED) {
+        //     if (current_tap_frame < 6) {
+        //         if (get_current_wpm() % 4 == 0) {
+        //             ++current_tap_frame;
+        //         }
+        //     }
+        //
+        //     oled_write_raw_P(heart_fill_frames[current_tap_frame], sizeof(idle));
+        // }
     }
 
     if (get_current_wpm() != 000) {
