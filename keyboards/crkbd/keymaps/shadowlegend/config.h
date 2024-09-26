@@ -32,8 +32,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OLED_BRIGHTNESS 128
 #define OLED_DISPLAY_WIDTH 128
 #define OLED_DISPLAY_HEIGHT 32
-/*#define SPLIT_OLED_WPM*/
-/*#define SPLIT_OLED_ENABLE*/
+#define SPLIT_WPM_ENABLE
+#define SPLIT_OLED_ENABLE
 
 #define RGB_MATRIX_LED_FLUSH_LIMIT 16
 #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
