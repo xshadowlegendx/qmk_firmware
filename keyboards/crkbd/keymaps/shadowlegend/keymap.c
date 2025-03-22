@@ -72,18 +72,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_NO,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_NO,
+       KC_NO,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,   KC_SLSH,  KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_NO,    MT(MOD_LGUI, KC_A),    MT(MOD_LALT, KC_S),    MT(MOD_LCTL, KC_D),    MT(MOD_LSFT, KC_F),    KC_G,                         KC_H,    MT(MOD_LSFT, KC_J),    MT(MOD_LCTL, KC_K),    MT(MOD_LALT, KC_L), MT(MOD_LGUI, KC_QUOT), KC_NO,
+      KC_NO,    MT(MOD_LGUI, KC_A),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),    KC_G,   KC_M,    MT(MOD_LSFT, KC_N),    MT(MOD_LCTL, KC_E),    MT(MOD_LALT, KC_I), MT(MOD_LGUI, KC_O), KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_NO,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_NO,
+      KC_NO,    KC_X,    KC_C,    KC_D,    KC_V,    KC_Z,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,  KC_NO,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_ESC,   LT(1, KC_SPC),  KC_TAB,     KC_BSPC, LT(2, KC_ENT),   LT(3, KC_DEL)
+                                          KC_ESC,   LT(2, KC_SPC),  KC_TAB,     KC_BSPC, LT(3, KC_ENT),   LT(4, KC_DEL)
                                       //`--------------------------'  `--------------------------'
 
   ),
 
-    [1] = LAYOUT_split_3x6_3(
+  [1] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+       KC_NO,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_NO,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      KC_NO,    MT(MOD_LGUI, KC_A),    MT(MOD_LALT, KC_S),    MT(MOD_LCTL, KC_D),    MT(MOD_LSFT, KC_F),    KC_G,                         KC_H,    MT(MOD_LSFT, KC_J),    MT(MOD_LCTL, KC_K),    MT(MOD_LALT, KC_L), MT(MOD_LGUI, KC_SCLN), KC_NO,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      KC_NO,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_NO,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          KC_ESC,   LT(2, KC_SPC),  KC_TAB,     KC_BSPC, LT(3, KC_ENT),   LT(4, KC_DEL)
+                                      //`--------------------------'  `--------------------------'
+
+  ),
+
+    [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        RGB_MOD,    BL_OFF,    BL_ON,    RGB_VAD,    RGB_VAI,    KC_NO,          KC_NO,     KC_MUTE,    KC_MPLY,    KC_VOLD,    KC_VOLU,    KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -95,11 +108,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [2] = LAYOUT_split_3x6_3(
+    [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_NO, KC_LBRC,   KC_7, KC_8,  KC_9, KC_RBRC,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_NO, KC_SCLN, KC_4, KC_5, KC_6, KC_EQL,                      KC_NO,  KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,  KC_NO,
+        KC_NO, KC_QUOT, KC_4, KC_5, KC_6, KC_EQL,                      KC_NO,  KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,  KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_NO, KC_GRV, KC_1, KC_2, KC_3, KC_BSLS,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -107,13 +120,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [3] = LAYOUT_split_3x6_3(
+    [4] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_NO, KC_F12, KC_F7, KC_F8, KC_9, KC_NO,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_NO, KC_F11, KC_F4, KC_F5, KC_F6, KC_NO,                      KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NO,
+      KC_NO, KC_F11, KC_F4, KC_F5, KC_F6, DF(0),                      KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NO,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_NO, KC_F10, KC_F1, KC_F2, KC_F3, KC_NO,                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+      KC_NO, KC_F10, KC_F1, KC_F2, KC_F3, DF(1),                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_ESC, KC_SPC,  KC_TAB,     KC_NO, KC_NO, KC_NO
                                       //`--------------------------'  `--------------------------'
